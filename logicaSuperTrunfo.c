@@ -116,7 +116,7 @@ int main() {
                     printf("Insira o número de pontos turísticos da cidade: \n");
                     scanf("%d", &cart2_pontos_turisticos);
 
-                    // Processamento para calcular a densidade poúlacional e o PIB per capta
+                    // Processamento para calcular a densidade populacional e o PIB per capta
 
                     // Carta 1
                     cart1_densidade_pupulacional = (float) cart1_populacao / cart1_area;
@@ -787,7 +787,7 @@ int main() {
                     //fim do switch do menu principal
                     }
                     //fim da comparação
-                    
+
                     //Encerrando o programa
                     printf("----------Fim do programa----------\n");
                     printf("\n");
