@@ -27,10 +27,12 @@ int main() {
 //variavel com as letras possíveis para o código da cidade
     char letras_codigo[16] = {'a','b','c','d','e','f','g','h','A','B','C','D','E','F','G','H'};
 
-//Variável verificação de código da cidade
+//Variáveis de verificação
     char verif_letra_cart1, verif_letra_cart2;
     int verif_num_cart1, verif_num_cart2;
-
+    int verif_cart1_populacao, verif_cart1_pontos_turisticos, verif_cart1_area, verif_cart1_pib, verif_cart1_pib_per_capta, verif_cart1_densidade_populacional;
+    int verif_cart2_populacao, verif_cart2_pontos_turisticos, verif_cart2_area, verif_cart2_pib, verif_cart2_pib_per_capta, verif_cart2_densidade_populacional;
+    int verif_cart3_populacao, verif_cart3_pontos_turisticos, verif_cart3_area, verif_cart3_pib, verif_cart3_pib_per_capta, verif_cart3_densidade_populacional;
 //Variável menu
     int menu_principal, menu_cart1, menu_cart2;
 
@@ -67,7 +69,7 @@ int main() {
         {
             printf("Insira o nome da cidade: \n");
             scanf("%s", &cart1_nome);
-            printf("Insira a polulação da cidade: \n");
+            printf("Insira a população da cidade: \n");
             scanf("%d", &cart1_populacao);
             printf("Insira a área da cidade: \n");
             scanf("%f", &cart1_area);
@@ -105,7 +107,7 @@ int main() {
                 {
                     printf("Insira o nome da cidade: \n");
                     scanf("%s", &cart2_nome);
-                    printf("Insira a polulação da cidade: \n");
+                    printf("Insira a população da cidade: \n");
                     scanf("%d", &cart2_populacao);
                     printf("Insira a área da cidade: \n");
                     scanf("%f", &cart2_area);
@@ -189,7 +191,7 @@ int main() {
                         printf("Área: %f\n", cart1_area);
                         printf("PIB: %.3f\n", cart1_pib);
                         printf("Pontos turísticos: %d\n", cart1_pontos_turisticos);
-                        printf("Densidade pupulacional: %.2f\n", cart1_densidade_pupulacional);
+                        printf("Densidade populacional: %.2f\n", cart1_densidade_pupulacional);
                         printf("PIB per Capta: %f\n", cart1_pib_per_capta);
 
                         // Carta 2
@@ -204,7 +206,7 @@ int main() {
                         printf("Área: %f\n", cart2_area);
                         printf("PIB: %.3f\n", cart2_pib);
                         printf("Pontos turísticos: %d\n", cart2_pontos_turisticos);
-                        printf("Densidade pupulacional: %.2f\n", cart2_densidade_pupulacional);
+                        printf("Densidade populacional: %.2f\n", cart2_densidade_pupulacional);
                         printf("PIB per Capta: %f\n", cart2_pib_per_capta);
                         printf("\n");
 
@@ -218,16 +220,28 @@ int main() {
                                 printf("\n");
                                 printf("População: \n");
 
-                                if(cart1_populacao > cart2_populacao){
-                                    printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_populacao = cart1_populacao > cart2_populacao ? 1 : 0;
+
+                                if (cart1_populacao == cart2_populacao)
+                                {
+                                    printf("A população %d da carta 1, é igual que a %d da carta 2!!",cart1_populacao, cart2_populacao);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if (verif_cart1_populacao == 1)
+                                {
+                                        printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -237,16 +251,27 @@ int main() {
                                 printf("\n");
                                 printf("Área: \n");
 
-                                if(cart1_area > cart2_area){
-                                    printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_area = cart1_area > cart2_area ? 1 : 0;
+
+                                if (cart1_area == cart2_area)
+                                {
+                                    printf("A área %f da carta 1, é igual que a %f da carta 2!!",cart1_area, cart2_area);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart1_area == 1){
+                                        printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -256,16 +281,27 @@ int main() {
                                 printf("\n");
                                 printf("PIB: \n");
 
-                                if(cart1_pib > cart2_pib){
-                                    printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_pib = cart1_pib > cart2_pib ? 1 : 0;
+
+                                if (cart1_pib == cart2_pib)
+                                {
+                                    printf("O PIB %f da carta 1, é igual que ao %f da carta 2!!",cart1_pib, cart2_pib);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart1_pib == 1){
+                                        printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -275,16 +311,26 @@ int main() {
                                 printf("\n");
                                 printf("Pontos Turísticos: \n");
 
-                                if(cart1_pontos_turisticos > cart2_pontos_turisticos){
-                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_pontos_turisticos = cart1_pontos_turisticos > cart2_pontos_turisticos ? 1 : 0;
+
+                                if(cart1_pontos_turisticos == cart2_pontos_turisticos){
+                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) igual(iguais) ao(aos) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart1_pontos_turisticos == 1){
+                                        printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -294,16 +340,27 @@ int main() {
                                 printf("\n");
                                 printf("Densidade Populacional: \n");
 
-                                if(cart1_densidade_pupulacional < cart2_densidade_pupulacional){
-                                    printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_densidade_populacional = cart1_densidade_pupulacional < cart2_densidade_pupulacional ? 1 : 0;
+
+                                if (cart1_densidade_pupulacional == cart2_densidade_pupulacional)
+                                {
+                                    printf("A densidade populacional %f da carta 1, é igual que ao %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart1_densidade_populacional == 1){
+                                        printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -311,18 +368,28 @@ int main() {
                             //escolha PIB per capta
                                 printf("----------Resultados das Comparações----------\n");
                                 printf("\n");
-                                printf("Densidade Populacional: \n");
+                                printf("PIB per capta: \n");
 
-                                if(cart1_densidade_pupulacional < cart2_densidade_pupulacional){
-                                    printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart1_pib_per_capta = cart1_pib_per_capta > cart2_pib_per_capta ? 1 : 0;
+
+                                if (cart1_pib_per_capta == cart2_pib_per_capta){
+                                    printf("O PIB per capta %f da carta 1, igual ao %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart1_pib_per_capta == 1){
+                                        printf("O PIB per capta %f da carta 1, é maior que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O PIB per capta %f da carta 1, é menor que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
                             
@@ -341,16 +408,28 @@ int main() {
                                 printf("\n");
                                 printf("População: \n");
 
-                                if(cart1_populacao > cart2_populacao){
-                                    printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_populacao = cart1_populacao > cart2_populacao ? 1 : 0;
+
+                                if (cart1_populacao == cart2_populacao)
+                                {
+                                    printf("A população %d da carta 1, é igual que a %d da carta 2!!",cart1_populacao, cart2_populacao);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if (verif_cart2_populacao == 1)
+                                {
+                                        printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -360,16 +439,27 @@ int main() {
                                 printf("\n");
                                 printf("Área: \n");
 
-                                if(cart1_area > cart2_area){
-                                    printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_area = cart1_area > cart2_area ? 1 : 0;
+
+                                if (cart1_area == cart2_area)
+                                {
+                                    printf("A área %f da carta 1, é igual que a %f da carta 2!!",cart1_area, cart2_area);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart2_area == 1){
+                                        printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -379,16 +469,27 @@ int main() {
                                 printf("\n");
                                 printf("PIB: \n");
 
-                                if(cart1_pib > cart2_pib){
-                                    printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_pib = cart1_pib > cart2_pib ? 1 : 0;
+
+                                if (cart1_pib == cart2_pib)
+                                {
+                                    printf("O PIB %f da carta 1, é igual que ao %f da carta 2!!",cart1_pib, cart2_pib);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart2_pib == 1){
+                                        printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -398,16 +499,26 @@ int main() {
                                 printf("\n");
                                 printf("Pontos Turísticos: \n");
 
-                                if(cart1_pontos_turisticos > cart2_pontos_turisticos){
-                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_pontos_turisticos = cart1_pontos_turisticos > cart2_pontos_turisticos ? 1 : 0;
+
+                                if(cart1_pontos_turisticos == cart2_pontos_turisticos){
+                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) igual(iguais) ao(aos) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart2_pontos_turisticos == 1){
+                                        printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -417,16 +528,27 @@ int main() {
                                 printf("\n");
                                 printf("Densidade Populacional: \n");
 
-                                if(cart1_densidade_pupulacional < cart2_densidade_pupulacional){
-                                    printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_densidade_populacional = cart1_densidade_pupulacional < cart2_densidade_pupulacional ? 1 : 0;
+
+                                if (cart1_densidade_pupulacional == cart2_densidade_pupulacional)
+                                {
+                                    printf("A densidade populacional %f da carta 1, é igual que ao %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart2_densidade_populacional == 1){
+                                        printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
 
@@ -434,18 +556,28 @@ int main() {
                             //escolha PIB per capta
                                 printf("----------Resultados das Comparações----------\n");
                                 printf("\n");
-                                printf("Densidade Populacional: \n");
+                                printf("PIB per capta: \n");
 
-                                if(cart1_densidade_pupulacional < cart2_densidade_pupulacional){
-                                    printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                //guardando resultados em variaveis e comparando em seguida
+                                verif_cart2_pib_per_capta = cart1_pib_per_capta > cart2_pib_per_capta ? 1 : 0;
+
+                                if (cart1_pib_per_capta == cart2_pib_per_capta){
+                                    printf("O PIB per capta %f da carta 1, é igual ao %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
                                     printf("\n");
-                                    printf("A carta número 1 é a vencedora!!!\n");
+                                    printf("Houve um empate, nenhum vencedor!!!\n");
                                     printf("\n");
                                 }else{
-                                    printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
-                                    printf("\n");
-                                    printf("A carta número 2 é a vencedora!!!\n");
-                                    printf("\n");
+                                    if(verif_cart2_pib_per_capta == 1){
+                                        printf("O PIB per capta %f da carta 1, é maior que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                        printf("\n");
+                                        printf("A carta número 1 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }else{
+                                        printf("O PIB per capta %f da carta 1, é menor que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                        printf("\n");
+                                        printf("A carta número 2 é a vencedora!!!\n");
+                                        printf("\n");
+                                    }
                                 }
                             break;
                             
@@ -477,7 +609,7 @@ int main() {
                         printf("Área: %f\n", cart1_area);
                         printf("PIB: %.3f\n", cart1_pib);
                         printf("Pontos turísticos: %d\n", cart1_pontos_turisticos);
-                        printf("Densidade pupulacional: %.2f\n", cart1_densidade_pupulacional);
+                        printf("Densidade populacional: %.2f\n", cart1_densidade_pupulacional);
                         printf("PIB per Capta: %f\n", cart1_pib_per_capta);
 
                         // Carta 2
@@ -492,7 +624,7 @@ int main() {
                         printf("Área: %f\n", cart2_area);
                         printf("PIB: %.3f\n", cart2_pib);
                         printf("Pontos turísticos: %d\n", cart2_pontos_turisticos);
-                        printf("Densidade pupulacional: %.2f\n", cart2_densidade_pupulacional);
+                        printf("Densidade populacional: %.2f\n", cart2_densidade_pupulacional);
                         printf("PIB per Capta: %f\n", cart2_pib_per_capta);
                         printf("\n");
 
@@ -502,86 +634,151 @@ int main() {
                         printf("\n");
                         printf("População: \n");
 
-                        if(cart1_populacao > cart2_populacao){
-                            printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_populacao = cart1_populacao > cart2_populacao ? 1 : 0;
+
+                        if (cart1_populacao == cart2_populacao)
+                        {
+                            printf("A população %d da carta 1, é igual que a %d da carta 2!!",cart1_populacao, cart2_populacao);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if (verif_cart3_populacao == 1)
+                        {
+                                printf("A população %d da carta 1, é maior que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("A população %d da carta 1, é menor que a %d da carta 2!!",cart1_populacao, cart2_populacao);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
 
                         printf("Área: \n");
 
-                        if(cart1_area > cart2_area){
-                            printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_area = cart1_area > cart2_area ? 1 : 0;
+
+                        if (cart1_area == cart2_area)
+                        {
+                            printf("A área %f da carta 1, é igual que a %f da carta 2!!",cart1_area, cart2_area);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if(verif_cart3_area == 1){
+                                printf("A área %f da carta 1, é maior que a %f da carta 2!!",cart1_area, cart2_area);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("A área %f da carta 1, é menor que a %f da carta 2!!",cart1_area, cart2_area);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
 
                         printf("PIB: \n");
 
-                        if(cart1_pib > cart2_pib){
-                            printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_pib = cart1_pib > cart2_pib ? 1 : 0;
+
+                        if (cart1_pib == cart2_pib)
+                        {
+                            printf("O PIB %f da carta 1, é igual que ao %f da carta 2!!",cart1_pib, cart2_pib);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if(verif_cart3_pib == 1){
+                                printf("O PIB %f da carta 1, é maior que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("O PIB %f da carta 1, é menor que o %f da carta 2!!",cart1_pib, cart2_pib);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
 
                         printf("Pontos Turísticos: \n");
 
-                        if(cart1_pontos_turisticos > cart2_pontos_turisticos){
-                            printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_pontos_turisticos = cart1_pontos_turisticos > cart2_pontos_turisticos ? 1 : 0;
+
+                        if(cart1_pontos_turisticos == cart2_pontos_turisticos){
+                            printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) igual(iguais) ao(aos) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if(verif_cart3_pontos_turisticos == 1){
+                                printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) maior(maiores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("O(Os) %d ponto(os) turístico(os) da carta 1, é(são) menor(menores) que o(os) %d da carta 2!!",cart1_pontos_turisticos, cart2_pontos_turisticos);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
 
                         printf("Densidade Populacional: \n");
 
-                        if(cart1_densidade_pupulacional < cart2_densidade_pupulacional){
-                            printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_densidade_populacional = cart1_densidade_pupulacional < cart2_densidade_pupulacional ? 1 : 0;
+
+                        if (cart1_densidade_pupulacional == cart2_densidade_pupulacional)
+                        {
+                            printf("A densidade populacional %f da carta 1, é igual que ao %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if(verif_cart3_densidade_populacional == 1){
+                                printf("A densidade populacional %f da carta 1, é menor que a %f da carta 2!!",cart1_densidade_pupulacional, cart2_densidade_pupulacional);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("A densidade populacional %f da carta 2, é menor que a %f da carta 1!!", cart2_densidade_pupulacional, cart1_densidade_pupulacional);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
 
                         printf("PIB per capta: \n");
 
-                        if(cart1_area > cart2_area){
-                            printf("O PIB per capta %f da carta 1, é maior que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                        //guardando resultados em variaveis e comparando em seguida
+                        verif_cart3_pib_per_capta = cart1_pib_per_capta > cart2_pib_per_capta ? 1 : 0;
+
+                        if (cart1_pib_per_capta == cart2_pib_per_capta){
+                            printf("O PIB per capta %f da carta 1, igual ao %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
                             printf("\n");
-                            printf("A carta número 1 é a vencedora!!!\n");
+                            printf("Houve um empate, nenhum vencedor!!!\n");
                             printf("\n");
                         }else{
-                            printf("O PIB per capta %f da carta 1, é menor que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
-                            printf("\n");
-                            printf("A carta número 2 é a vencedora!!!\n");
-                            printf("\n");
+                            if(verif_cart3_pib_per_capta == 1){
+                                printf("O PIB per capta %f da carta 1, é maior que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                printf("\n");
+                                printf("A carta número 1 é a vencedora!!!\n");
+                                printf("\n");
+                            }else{
+                                printf("O PIB per capta %f da carta 1, é menor que o %f da carta 2!!",cart1_pib_per_capta, cart2_pib_per_capta);
+                                printf("\n");
+                                printf("A carta número 2 é a vencedora!!!\n");
+                                printf("\n");
+                            }
                         }
                     break;
                     default:
@@ -589,9 +786,8 @@ int main() {
                     break;
                     //fim do switch do menu principal
                     }
-                    
-                    
                     //fim da comparação
+                    
                     //Encerrando o programa
                     printf("----------Fim do programa----------\n");
                     printf("\n");
